@@ -23,14 +23,14 @@ ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 # Application definition
 
 INSTALLED_APPS = [
-    'cloudinary',
+    'cloudinary_storage',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
+    'cloudinary',
     "projects.apps.ProjectsConfig",
     "users.apps.UsersConfig",
     'rest_framework',
@@ -95,7 +95,6 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
