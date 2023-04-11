@@ -1,0 +1,6 @@
+.env
+devsearch/__pycache__
+projects/__pycache__
+users/__pycache__
+staticfiles
+api
