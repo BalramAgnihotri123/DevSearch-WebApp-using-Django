@@ -40,9 +40,9 @@ INSTALLED_APPS = [
 
 CLOUDINARY_STORAGE = {
 
-    'CLOUD_NAME': "dnoomtyyx",
-    'API_KEY':"778936734784627",
-    'API_SECRET':"BtT6uftrlSLPBqxuNUc0ESz09uc"
+    'CLOUD_NAME': os.getenv("CLOUD_NAME"),
+    'API_KEY':os.getenv("API_KEY"),
+    'API_SECRET':os.getenv("API_SECRET")
 
 }
 
