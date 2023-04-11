@@ -24,7 +24,6 @@ def project(request, pk):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
 
-        print(request.user.profile)
         review = form.save(commit = False)
         review.owner =  request.user.profile
         review.project = project
@@ -32,7 +31,7 @@ def project(request, pk):
 
         project.VoteCalc
 
-        return redirect("project", pk = project.id)
+        return redirect("project", pk = project.id) #type:ignore
 
     return render(request, "projects/single-project.html", {"project" : project, "tags" : tags, "form":form})
 
