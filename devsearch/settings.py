@@ -125,11 +125,11 @@ WSGI_APPLICATION = "devsearch.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "devsearch",
-        'USER': 'postgres',
-        'PASSWORD':'782781',
-        "HOST":'localhost',
-        'PORT':'5432',
+        "NAME": os.getenv("PGDATABASE"),
+        'USER': os.getenv("PGUSER"),
+        'PASSWORD':os.getenv("PGPASSWORD"),
+        "HOST":os.getenv("PGHOST"),
+        'PORT':os.getenv("PGPORT"),
     }
 }
 
