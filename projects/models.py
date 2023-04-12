@@ -9,9 +9,8 @@ class Project(models.Model):
     Description = models.TextField(max_length = 2000, null = True, blank = True)
     demo_link = models.CharField(max_length = 2000, null = True, blank = True)
     source_link = models.CharField(max_length = 2000, null = True, blank = True)
-    featured_images = models.ImageField(upload_to = 'images/', blank=True, null=True,
-                                         default='https://res.cloudinary.com/dnoomtyyx/image/upload/v1681232172/static/images/default.jpg')
-    tags = models.ManyToManyField("Tag") 
+    featured_images = models.ImageField(upload_to = 'images/', blank=True, null=True, default='default.jpg')
+    tags = models.ManyToManyField("Tag")
     vote_ratio = models.IntegerField(default = 0, null = True, blank = True)
     vote_count = models.IntegerField(default = 0, blank = True, null = True)
     created = models.DateTimeField(auto_now_add  = True)

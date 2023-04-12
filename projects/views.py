@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from users.models import skill
-from .forms import ProjectForm, ReviewForm, ProjectFormTemp
-from .models import Project, Tag
+from .forms import ProjectForm, ReviewForm
+from .models import Project
 from .utils import searchProjects
 
 def projects(request):
@@ -40,21 +39,13 @@ def project(request, pk):
 @login_required(login_url = "login")
 def create_project(request):
     profile = request.user.profile
-    form = ProjectFormTemp()
+    form = ProjectForm()
     if request.method == 'POST':
-        form = ProjectFormTemp(request.POST, request.FILES)
-
+        form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save(commit = False)
             project.owner = profile
             project.save()
-
-            for tag in project.tags.all():
-                sk, created = skill.objects.get_or_create(
-                    name = tag,
-                    owner = profile
-                )
-            
             return redirect("projects")
     context = {"form": form}
     return render(request, "projects/projects_form.html", context)
@@ -63,19 +54,13 @@ def create_project(request):
 def update_project(request, pk):
     profile = request.user.profile
     project = profile.project_set.get(id=pk)
-    form = ProjectFormTemp(instance=project)
+    form = ProjectForm(instance=project)
 
     if request.method == 'POST':
-        form = ProjectFormTemp(request.POST, request.FILES, instance=project)
+        form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
-            for tag in project.tags.all():
-                sk, created = skill.objects.get_or_create(
-                    name = tag,
-                    owner = profile
-                )
             return redirect("projects")
-
         
     context = {"form": form}
     return render(request, "projects/projects_form.html", context)
