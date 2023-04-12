@@ -5,7 +5,7 @@ from django import forms
 class ProjectForm(ModelForm):
     class Meta():
         model = Project
-        fields = ['Title', 'Description', 'featured_images', 'tags', 'source_link', 'demo_link']
+        fields = ['Title', 'Description', 'featured_images', 'source_link', 'demo_link']
         widgets = {'tags' : forms.CheckboxSelectMultiple}
 
     def __init__(self, *args, **kwargs):
@@ -15,7 +15,20 @@ class ProjectForm(ModelForm):
             field.widget.attrs.update(
                 {"class" : "input", "placeholder" : "Add field"}
                 )
-            
+
+class ProjectFormTemp(ModelForm):
+    class Meta():
+        model = Project
+        fields = ['Title', 'Description', 'featured_images', 'source_link', 'demo_link', 'tags']
+        widgets = {'tags' : forms.CheckboxSelectMultiple}
+
+    def __init__(self, *args, **kwargs):
+        super(ProjectFormTemp, self).__init__(*args, **kwargs)
+        
+        for name, field in self.fields.items():
+            field.widget.attrs.update(
+                {"class" : "input", "placeholder" : "Add field"}
+                )
 
 class ReviewForm(ModelForm):
     class Meta():
