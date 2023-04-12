@@ -58,7 +58,7 @@ from psycopg2._psycopg import (                     # noqa
     InterfaceError, InternalError, NotSupportedError, OperationalError,
 
     _connect, apilevel, threadsafety, paramstyle,
-    __version__, __libpq_version__,
+    __version__, __libpq_version__, #type:ignore
 )
 
 
