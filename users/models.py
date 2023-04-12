@@ -12,7 +12,8 @@ class Profile(models.Model):
     short_intro = models.CharField(max_length = 500, null = True, blank = True)
     bio = models.TextField(null = True, blank = True)
     profile_image = models.ImageField(null = True, blank = True, 
-                                      default="profiles/user-default.png", upload_to="profiles/")
+                                      default="https://res.cloudinary.com/dnoomtyyx/image/upload/v1681232648/static/images/profiles/user-default.bf40b0e86c9d.png",
+                                      upload_to="profiles/")
     github_link = models.CharField(max_length = 500, null = True, blank = True)
     linkedin_link = models.CharField(max_length = 500, null = True, blank = True)
     website_link = models.CharField(max_length = 500, null = True, blank = True)
